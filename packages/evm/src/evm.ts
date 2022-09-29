@@ -296,8 +296,8 @@ export class EVM implements EVMInterface {
     }
 
     // Safeguard if "process" is not available (browser)
-    if (typeof process?.env.DEBUG !== 'undefined') {
-      this.DEBUG = true
+    if (process === undefined) {
+      this.DEBUG = false
     }
 
     // We cache this promisified function as it's called from the main execution loop, and
