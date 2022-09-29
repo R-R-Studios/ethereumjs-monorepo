@@ -129,6 +129,14 @@ export interface EVMOpts {
    * The External Interface Factory, used to build an External Interface when this is necessary
    */
   eei: EEIInterface
+
+  /**
+   * Option to disable Debug logging
+   * Default: `true`
+   * Set to `false` to disable debug output
+   */
+
+  printCLDebugOutput?: boolean
 }
 
 /**
@@ -296,7 +304,7 @@ export class EVM implements EVMInterface {
     }
 
     // Safeguard if "process" is not available (browser)
-    if (process === undefined) {
+    if (process === undefined || opts.printCLDebugOutput === false) {
       this.DEBUG = false
     }
 
