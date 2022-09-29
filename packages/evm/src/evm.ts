@@ -209,7 +209,7 @@ export class EVM implements EVMInterface {
    * performance reasons to avoid string literal evaluation
    * @hidden
    */
-  readonly DEBUG: boolean = false
+  readonly DEBUG: boolean = true
 
   /**
    * EVM async constructor. Creates engine instance and initializes it.
