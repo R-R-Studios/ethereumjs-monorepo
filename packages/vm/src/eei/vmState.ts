@@ -35,9 +35,17 @@ export class VmState implements EVMStateAccess {
 
   protected _originalStorageCache: Map<AddressHex, Map<AddressHex, Buffer>>
 
-  protected readonly DEBUG: boolean = false
+  public readonly DEBUG: boolean = true
 
-  constructor({ common, stateManager }: { common?: Common; stateManager: StateManager }) {
+  constructor({
+    common,
+    stateManager,
+    deactivateCLDebug = false,
+  }: {
+    common?: Common
+    stateManager: StateManager
+    deactivateCLDebug?: boolean
+  }) {
     this._checkpointCount = 0
     this._stateManager = stateManager
     this._common = common ?? new Common({ chain: Chain.Mainnet, hardfork: Hardfork.Petersburg })
@@ -47,10 +55,8 @@ export class VmState implements EVMStateAccess {
     this._accessedStorage = [new Map()]
     this._accessedStorageReverted = [new Map()]
 
-    // Safeguard if "process" is not available (browser)
-    if (process !== undefined && typeof process.env.DEBUG !== 'undefined') {
-      this.DEBUG = true
-    }
+    // Skip debug() calls if
+    this.DEBUG = !deactivateCLDebug
     this._debug = createDebugLogger('vm:state')
   }
 
