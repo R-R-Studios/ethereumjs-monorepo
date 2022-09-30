@@ -305,7 +305,7 @@ export class EVM implements EVMInterface {
 
     // Optimize performance by skipping debug() calls
     // When debugging has been deactivated
-    if (process === undefined || opts.deactivateCLDebug === true) {
+    if (opts.deactivateCLDebug === true) {
       this.DEBUG = false
     }
 
