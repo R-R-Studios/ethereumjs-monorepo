@@ -131,12 +131,13 @@ export interface EVMOpts {
   eei: EEIInterface
 
   /**
-   * Option to disable Debug logging
-   * Default: `true`
-   * Set to `false` to disable debug output
+   * Option to disable command line debugging
+   * Will take precedence over process.env.DEBUG variable usage
+   * Default: `false`
+   * Set to `true` to disable debugging.
    */
 
-  printCLDebugOutput?: boolean
+  deactivateCLDebug?: boolean
 }
 
 /**
