@@ -42,7 +42,14 @@ tape('VM -> basic instantiation / boolean switches', (t) => {
       'it has default trie'
     )
     st.equal(vm._common.hardfork(), Hardfork.Merge, 'it has correct default HF')
+    st.ok(vm.DEBUG, 'DEBUG should default to true')
     st.end()
+  })
+
+  t.test('deactivateCLDebug option should set vm.DEBUG: false', async (t) => {
+    const vm = await VM.create({ deactivateCLDebug: true })
+    t.notok(vm.DEBUG, 'DEBUG should be disabled')
+    t.end()
   })
 
   t.test('should be able to activate precompiles', async (st) => {
