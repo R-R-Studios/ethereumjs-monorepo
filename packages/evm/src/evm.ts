@@ -211,11 +211,10 @@ export class EVM implements EVMInterface {
   public readonly _mcl: any //
 
   /**
-   * EVM is run in DEBUG mode (default: false)
+   * EVM is run in DEBUG mode (default: true)
    * Taken from DEBUG environment variable
    *
-   * Safeguards on debug() calls are added for
-   * performance reasons to avoid string literal evaluation
+   * debug() calls can be deactivated with disableCLDebug
    * @hidden
    */
   readonly DEBUG: boolean = true
@@ -304,8 +303,9 @@ export class EVM implements EVMInterface {
       }
     }
 
-    // Safeguard if "process" is not available (browser)
-    if (process === undefined || opts.printCLDebugOutput === false) {
+    // Optimize performance by skipping debug() calls
+    // When debugging has been deactivated
+    if (process === undefined || opts.deactivateCLDebug === true) {
       this.DEBUG = false
     }
 
