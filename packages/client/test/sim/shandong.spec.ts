@@ -81,7 +81,7 @@ tape('Shandong EIP tests', async (t) => {
   })
 
   // ------------EIP 3670 tests-------------------------------
-  t.test(' EIP 3670 tests', async (st) => {
+  t.test('EIP 3670 tests', async (st) => {
     const data = '0x67EF0001010001006060005260086018F3'
     const res = await runTx(data)
     st.ok(res.contractAddress !== undefined, 'created contract')
