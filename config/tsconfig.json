@@ -10,8 +10,8 @@
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
-    "downlevelIteration": true,
-    "strict": true,
+    "downlevelIteration": false,
+    "strict": false,
     "target": "es2020",
     "lib": ["ES2020", "DOM"]
   }
