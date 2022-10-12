@@ -1,6 +1,6 @@
 {
   "all": true,
-  "cache": false,
+  "cache": true,
   "extension": [".ts"],
   "reporter": ["lcov", "text"]
 }
